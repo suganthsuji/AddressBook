@@ -82,4 +82,22 @@ public class AddressBookOperations implements IAddressBook{
         System.out.println(ContactList);
     }
 
+    @Override
+    public void deleteContact(String firstName) {
+
+        boolean flag= false;
+        for(Contacts contacts : ContactList){
+            if(contacts.getFirstName().equals(firstName)){
+                flag= true;
+                ContactList.remove(contacts);
+                System.out.println("Contact deleted");
+                break;
+            }
+        }
+        if(flag==false){
+            System.out.println("Contact not present in the book");
+        }
+        System.out.println(ContactList);
+    }
+
 }
