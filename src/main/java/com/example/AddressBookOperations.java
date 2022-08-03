@@ -1,10 +1,11 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AddressBookOperations implements IAddressBook{
-    ArrayList<Contacts> ContactList=new ArrayList();
+    List<Contacts> ContactList=new ArrayList();
     Scanner sc=new Scanner(System.in);
     @Override
     public void addContacts() {
@@ -98,6 +99,11 @@ public class AddressBookOperations implements IAddressBook{
             System.out.println("Contact not present in the book");
         }
         System.out.println(ContactList);
+    }
+
+    @Override
+    public List<Contacts> returnContact() {
+        return ContactList;
     }
 
 }
