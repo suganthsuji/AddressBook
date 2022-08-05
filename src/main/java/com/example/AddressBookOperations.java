@@ -47,6 +47,8 @@ public class AddressBookOperations implements IAddressBook{
                     ContactList.add(contacts);
 
                     System.out.println(ContactList);
+
+                    break;
                 }
             }
         }
@@ -77,6 +79,7 @@ public class AddressBookOperations implements IAddressBook{
             ContactList.add(contacts);
 
             System.out.println(ContactList);
+
         }
     }
 
