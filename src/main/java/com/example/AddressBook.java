@@ -13,6 +13,7 @@ public class AddressBook {
         IAddressBook iAddressBook = new AddressBookOperations();
 
         while (true) {
+            //Book Operations return List of User that are Created for a Instance
             System.out.println("Enter 1 to Add contact");
             System.out.println("Enter 2 to Edit contact");
             System.out.println("Enter 3 to Delete contact");
@@ -23,14 +24,17 @@ public class AddressBook {
             }
             switch (input) {
                 case 1:
+                    //Adding Contact
                     iAddressBook.addContacts();
                     break;
                 case 2:
+                    //Editing a  Contact
                     String firstname = sc.next();
                     iAddressBook.editContact(firstname);
                     break;
                 case 3:
                     String firstName = sc.next();
+                    //Deleting  Contact
                     iAddressBook.deleteContact(firstName);
                     break;
 
