@@ -11,36 +11,76 @@ public class AddressBookOperations implements IAddressBook{
     public void addContacts() {
 
 
+
         System.out.println("Enter FirstName");
         String firstname=sc.next();
 
-        System.out.println("Enter Lastname");
-        String lastname=sc.next();
+        if(!ContactList.isEmpty()) {
 
-        System.out.println("Enter city");
-        String city=sc.next();
+            for (Contacts contacts : ContactList) {
+                if (contacts.getFirstName().equals(firstname)) {
+                    System.out.println("User Already Present in the book");
+                } else {
+                    System.out.println("Enter Lastname");
+                    String lastname = sc.next();
 
-        System.out.println("Enter state");
-        String state=sc.next();
+                    System.out.println("Enter city");
+                    String city = sc.next();
 
-        System.out.println("Enter email");
-        String email=sc.next();
+                    System.out.println("Enter state");
+                    String state = sc.next();
 
-        System.out.println("Enter Address");
-        String address=sc.next();
+                    System.out.println("Enter email");
+                    String email = sc.next();
 
-        System.out.println("Enter phonenumber");
-        int phonenumber=sc.nextInt();
+                    System.out.println("Enter Address");
+                    String address = sc.next();
 
-        System.out.println("Enter zip");
-        int zip=sc.nextInt();
+                    System.out.println("Enter phonenumber");
+                    int phonenumber = sc.nextInt();
+
+                    System.out.println("Enter zip");
+                    int zip = sc.nextInt();
 
 
-        Contacts contacts=new Contacts(firstname,lastname,city,state,address,email,zip,phonenumber);
-        ContactList.add(contacts);
+                    contacts = new Contacts(firstname, lastname, city, state, address, email, zip, phonenumber);
+                    ContactList.add(contacts);
 
-        System.out.println(ContactList);
+                    System.out.println(ContactList);
 
+                    break;
+                }
+            }
+        }
+        else {
+            System.out.println("Enter Lastname");
+            String lastname = sc.next();
+
+            System.out.println("Enter city");
+            String city = sc.next();
+
+            System.out.println("Enter state");
+            String state = sc.next();
+
+            System.out.println("Enter email");
+            String email = sc.next();
+
+            System.out.println("Enter Address");
+            String address = sc.next();
+
+            System.out.println("Enter phonenumber");
+            int phonenumber = sc.nextInt();
+
+            System.out.println("Enter zip");
+            int zip = sc.nextInt();
+
+
+            Contacts contacts = new Contacts(firstname, lastname, city, state, address, email, zip, phonenumber);
+            ContactList.add(contacts);
+
+            System.out.println(ContactList);
+
+        }
     }
 
     @Override

@@ -1,9 +1,7 @@
 package com.example;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookOperation {
 
@@ -16,6 +14,62 @@ public class BookOperation {
         String bookName= sc.next();
         book.put(bookName,addressBook.addContactToAddressBook());
         System.out.println("Created Book: "+book);
+    }
+    public void search(){
+        System.out.println("Enter new Book Name");
+        String bookName= sc.next();
+        System.out.println("Enter City");
+        String city = sc.next();
+        List<Contacts> contacts=book.get(bookName);
+        List<String> name=new ArrayList<>();
+        List<Contacts> cityDetails=contacts.stream().filter((a)->a.getCity().equals(city)).collect(Collectors.toList());
+        for(Contacts contact:cityDetails ){
+            name.add(contact.getFirstName());
+        }
+        System.out.println("The first names are:- "+name);
+    }
+
+    public void viewPerson(){
+        boolean exit=false;
+        while (true) {
+            System.out.println("Enter 1 for Search Person By City");
+            System.out.println("Enter 2 for Search Person By State");
+            int input = sc.nextInt();
+            switch (input) {
+                case 1:
+                    System.out.println("Enter book Name");
+                    String bookName = sc.next();
+                    System.out.println("Enter City");
+                    String city = sc.next();
+                    List<Contacts> contacts = book.get(bookName);
+                    List<Contacts> nameOfContact = contacts.stream().filter(a -> a.getCity().equals(city)).collect(Collectors.toList());
+                    System.out.println("Person Details In the City " + city + " -> " + nameOfContact);
+                    break;
+                case 2:
+                    System.out.println("Enter book Name");
+                    bookName = sc.next();
+                    System.out.println("Enter State");
+                    String state = sc.next();
+                    contacts = book.get(bookName);
+                    /*
+                    Using Java Streams to filter out the objects that are having State same as the user input
+                     */
+                    nameOfContact = contacts.stream().filter(a -> a.getState().equals(state)).collect(Collectors.toList());
+                    System.out.println("Person Details In the State " + state + " -> " + nameOfContact);
+                    break;
+                default:
+                    exit = true;
+                    break;
+            }
+            /*
+            Exit from the loop
+             */
+            if(exit == true)
+            {
+                break;
+            }
+        }
+
     }
 
 
