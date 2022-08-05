@@ -34,6 +34,7 @@ public class BookOperation {
         while (true) {
             System.out.println("Enter 1 for Search Person By City");
             System.out.println("Enter 2 for Search Person By State");
+            int count = 0;
             int input = sc.nextInt();
             switch (input) {
                 case 1:
@@ -41,9 +42,15 @@ public class BookOperation {
                     String bookName = sc.next();
                     System.out.println("Enter City");
                     String city = sc.next();
+
                     List<Contacts> contacts = book.get(bookName);
                     List<Contacts> nameOfContact = contacts.stream().filter(a -> a.getCity().equals(city)).collect(Collectors.toList());
                     System.out.println("Person Details In the City " + city + " -> " + nameOfContact);
+                    for(Contacts contacts1 : nameOfContact)
+                    {
+                        count++;
+                    }
+                    System.out.println("Count of Person in the City " + city + " = " + count);
                     break;
                 case 2:
                     System.out.println("Enter book Name");
@@ -56,6 +63,11 @@ public class BookOperation {
                      */
                     nameOfContact = contacts.stream().filter(a -> a.getState().equals(state)).collect(Collectors.toList());
                     System.out.println("Person Details In the State " + state + " -> " + nameOfContact);
+                    for(Contacts contacts1 : nameOfContact)
+                    {
+                         count++;
+                    }
+                    System.out.println("Count of Person in the State " + state + " = " + count);
                     break;
                 default:
                     exit = true;
